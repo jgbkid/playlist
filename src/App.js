@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-let textColor = 'maroon';
+let textColor = 'lime';
 let defaultStyle = {
   color: textColor
 };
@@ -35,7 +35,7 @@ class Playlist extends Component {
   render() {
     let color = 'red'
     return (
-      <div style={{...defaultStyle, width:'30%', background:'#ffaaaf', display:'inline-block', margin: '10px'}}>
+      <div style={{...defaultStyle, width:'30%', background:'maroon', display:'inline-block', margin: '10px'}}>
 {/*using spread operator ...defaultStyle*/}
         <img/>
         <h3>Playlist Name</h3>

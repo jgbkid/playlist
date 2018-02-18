@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-let textColor = 'lime';
+let textColor = 'white';
 let defaultStyle = {
   color: textColor
 };

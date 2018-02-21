@@ -96,7 +96,7 @@ class Playlist extends Component {
     let playlist = this.props.playlist
     let color = 'red'
     return (
-      <div style={{...defaultStyle, width:'30%', background:'maroon', display:'inline-block', margin: '10px'}}>
+      <div style={{...defaultStyle, width:'22%', background:'#fafafa', display:'inline-block', margin: '10px'}}>
 {/*using spread operator ...defaultStyle*/}
         <img/>
         <h3>{playlist.name}</h3>

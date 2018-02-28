@@ -21,7 +21,7 @@ let fakeServerData = {
 
        },
        {
-         name: 'My Favorites Vol. 2',
+         name: 'Discover Weekly',
          songs:[
           {name:'Bagbak', duration: 1345},
           {name: 'Remember Me', duration: 2345}, 
@@ -29,7 +29,7 @@ let fakeServerData = {
          ]
        },
        {
-         name: 'My Favorites Vol. 3',
+         name: 'Another Best Playlist',
          songs:[
           {name:'Bagbak', duration: 1345},
           {name: 'Remember Me', duration: 2345}, 
@@ -37,9 +37,9 @@ let fakeServerData = {
          ]
        },
        {
-         name: 'My Favorites Vol. 4',
+         name: 'Playlist!',
          songs:[
-          {name:'Bagbak', duration: 1345},
+          {name:'Weekly Riot', duration: 1345},
           {name: 'Remember Me', duration: 2345}, 
           {name:'Bad Romance', duration: 1432}
          ]
@@ -84,8 +84,8 @@ class Filter extends Component {
     return (
       <div style={defaultStyle}>
         <img/>
-        <input type="text"/>
-        Filter
+        <input type="text" onKeyUp={event => 
+          this.props.onTextChange(event.target.value)}/>
       </div>
     );
   }
@@ -115,13 +115,18 @@ class App extends Component {
 
   constructor() {
     super();
-    this.state = {serverData:{}}
+    this.state = {
+      serverData:{},
+      filterString: ''
+  
+    }
   }
   componentDidMount() {
     setTimeout(() =>{
-    this.setState({serverData: fakeServerData})
-  }, 1000);
+    this.setState({serverData: fakeServerData});
+    }, 1000);
   }
+
 
   render() {
    
@@ -135,8 +140,16 @@ class App extends Component {
         </h1>
         <PlaylistCounter playlists={this.state.serverData.user.playlists}/>
         <HoursCounter playlists={this.state.serverData.user.playlists}/>
-         <Filter/>
-         {this.state.serverData.user.playlists.map(playlist => 
+
+         <Filter onTextChange={text => {
+           console.log(text);
+         this.setState({filterString:text})
+        }}/>
+
+         {this.state.serverData.user.playlists.filter(playlist =>
+            playlist.name.toLowerCase().includes(
+              this.state.filterString.toLowerCase())
+         ).map(playlist => 
          <Playlist playlist ={playlist}/> 
           )}
          
